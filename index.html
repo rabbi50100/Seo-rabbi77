@@ -27,13 +27,14 @@
     .category-filters button.active { background-color: orange; color: black; }
     #saved-posts-button { font-size: 24px; cursor: pointer; color: #fff; border: none; background: none; padding: 8px 12px; border-radius: 5px; transition: background-color 0.3s ease; }
     #saved-posts-button:hover { background-color: #333; }
-    #search-bar { margin: 20px auto; max-width: 600px; display: block; width: 100%; padding: 10px; background-color: #222; color: #fff; border: none; border-radius: 6px; font-size: 16px; }
+    #search-bar { margin: 20px auto; max-width: 600px; display: block; width: calc(100% - 20px); padding: 10px; background-color: #222; color: #fff; border: 1px solid #444; border-radius: 6px; font-size: 16px; }
     .movie-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 600px; margin: 20px auto; }
     .movie-card { background-color: #222; border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.2s; position: relative; }
     .movie-card:hover { transform: scale(1.03); }
     .movie-card img { width: 100%; height: 280px; object-fit: cover; display: block; }
     .movie-title { padding: 10px; text-align: center; font-weight: bold; }
-    .more-options-btn { position: absolute; top: 8px; right: 8px; font-size: 24px; cursor: pointer; color: orange; background: none; border: none; padding: 2px 8px; line-height: 1; z-index: 10; }
+    /* থ্রি-ডট মেনুর জন্য নতুন CSS */
+    .more-options-btn { position: absolute; top: 8px; right: 8px; font-size: 24px; cursor: pointer; color: orange; background: rgba(0,0,0,0.5); border: none; padding: 0px 8px; border-radius: 50%; line-height: 1; z-index: 10; }
     .options-menu { display: none; position: absolute; top: 35px; right: 8px; background-color: #333; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.7); z-index: 11; padding: 5px 0; min-width: 120px; text-align: left; }
     .options-menu a { display: block; padding: 8px 15px; color: white; text-decoration: none; font-size: 14px; transition: background-color 0.2s; }
     .options-menu a:hover { background-color: #555; }
@@ -41,17 +42,20 @@
     .modal-content { background-color: #222; margin: 10% auto; padding: 20px; border-radius: 10px; width: 90%; max-width: 400px; text-align: center; }
     .modal-content img { width: 100%; border-radius: 10px; }
     .modal-content h3 { margin: 15px 0; color: orange; }
-    .close { float: right; font-size: 20px; color: white; cursor: pointer; }
+    .close { float: right; font-size: 28px; font-weight: bold; color: white; cursor: pointer; line-height: 1; }
     #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 10000; flex-direction: column; }
     .spinner { border: 6px solid #f3f3f3; border-top: 6px solid orange; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px; }
     #loader p { color: orange; font-size: 18px; margin: 0; }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     .movie-stats { display: flex; justify-content: space-around; align-items: center; padding: 8px 0; border-top: 1px solid #333; margin-top: 5px; font-size: 14px; }
-    .download-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
-    .download-buttons a { display: inline-block; padding: 8px 12px; background-color: #5cb85c; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; transition: background-color 0.3s ease; font-size: 13px; text-align: center; }
-    .download-buttons a:hover { background-color: #4cae4c; }
-    .download-buttons a.watch-button { background-color: #d9534f; color: white; }
-    .download-buttons a.watch-button:hover { background-color: #c9302c; }
+    .download-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+    .download-buttons a, .download-buttons button { display: inline-block; padding: 10px 15px; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; transition: background-color 0.3s ease; font-size: 14px; text-align: center; border: none; cursor: pointer; }
+    .download-buttons a:hover, .download-buttons button:hover { opacity: 0.9; }
+    .download-buttons .download-btn { background-color: #5cb85c; }
+    .download-buttons .watch-button { background-color: #d9534f; }
+    /* শেয়ার বাটনের জন্য নতুন CSS */
+    .download-buttons .share-button { background-color: #007bff; }
+    #saved-posts-container { max-height: 300px; overflow-y: auto; text-align: left; }
   </style>
 
 </head>
@@ -62,20 +66,20 @@
   </header>
 
   <div class="category-filters">
-    <button onclick="filterByCategory('all', event)" class="active">All</button>
-    <!-- অন্যান্য ক্যাটাগরি বাটন -->
-     <button onclick="filterByCategory('latest movie', event)">Latest Movie</button>
-    <button onclick="filterByCategory('action', event)">Action</button>
-    <button onclick="filterByCategory('comedy', event)">Comedy</button>
-    <button onclick="filterByCategory('horror', event)">Horror</button>
-    <button onclick="filterByCategory('romantic', event)">Romantic</button>
+    <button onclick="filterByCategory('all')" class="active">All</button>
+    <button onclick="filterByCategory('latest movie')">Latest Movie</button>
+    <button onclick="filterByCategory('action')">Action</button>
+    <button onclick="filterByCategory('comedy')">Comedy</button>
+    <button onclick="filterByCategory('horror')">Horror</button>
+    <button onclick="filterByCategory('romantic')">Romantic</button>
   </div>
 
+  <!-- সেভ করা পোস্ট দেখানোর জন্য নতুন মডাল -->
   <div id="savedPostsModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">×</span>
+      <span class="close" onclick="closeModal('savedPostsModal')">×</span>
       <h2>📚 Saved Posts</h2>
-      <!-- সেভ করা পোস্ট এখানে আসবে -->
+      <div id="saved-posts-container"></div>
     </div>
   </div>
 
@@ -94,9 +98,9 @@
 
   <div class="movie-grid" id="movie-grid"></div>
 
-  <!-- Footer এবং অন্যান্য HTML -->
-  <div class="footer-links">
-      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+  <div style="text-align: center; padding: 20px; color: #777; font-size: 14px;">
+      <a href="#" style="color: orange; text-decoration: none;">Privacy Policy</a> | 
+      <a href="#" style="color: orange; text-decoration: none;">Terms of Service</a>
       <p style="margin-top: 10px;">© 2025 Movie Downloader. All Rights Reserved.</p>
   </div>
 
@@ -124,12 +128,11 @@
     const loader = document.getElementById('loader');
     const viewerModal = document.getElementById('viewerModal');
     const savedPostsModal = document.getElementById('savedPostsModal');
+    const savedPostsButton = document.getElementById('saved-posts-button');
+    const savedPostsContainer = document.getElementById('saved-posts-container');
 
     let allMoviesData = {};
     let currentCategoryFilter = 'all';
-    const originalTitle = document.title;
-    const originalDescription = document.querySelector('meta[name="description"]').getAttribute('content');
-    const baseLocation = window.location.pathname + window.location.search;
 
     // --- Data Loading ---
     document.addEventListener('DOMContentLoaded', () => {
@@ -138,114 +141,144 @@
         moviesRef.orderByChild('timestamp').on('value', snapshot => {
             loader.style.display = 'none';
             document.body.classList.remove('loading');
-            renderMovies(snapshot);
+            const moviesArray = [];
+            snapshot.forEach(child => {
+                const movieData = { key: child.key, ...child.val() };
+                moviesArray.push(movieData);
+                allMoviesData[child.key] = movieData;
+            });
+            renderMovies(moviesArray.reverse());
         }, error => {
             console.error("Firebase Error:", error);
             loader.style.display = 'none';
             movieGrid.innerHTML = '<p style="color:red;">Failed to load movies.</p>';
         });
-
-        moviesRef.once('value').then(snapshot => {
-            handleUrlOnLoad(snapshot);
-        });
     });
 
-    function renderMovies(snapshot) {
+    function renderMovies(moviesArray) {
         movieGrid.innerHTML = '';
-        allMoviesData = {};
-        const moviesArray = [];
-        snapshot.forEach(child => {
-            const movieData = { key: child.key, ...child.val() };
-            moviesArray.push(movieData);
-            allMoviesData[child.key] = movieData;
-        });
-        
-        moviesArray.reverse().forEach(movie => addMovieCard(movie));
+        moviesArray.forEach(movie => addMovieCard(movie));
+        filterMovies(); // Initial filter
     }
 
     function addMovieCard(movie) {
         const card = document.createElement('div');
         card.className = 'movie-card';
         card.setAttribute('data-key', movie.key);
-        card.onclick = () => openViewer(movie.key);
         
         card.innerHTML = `
-            <img src="${movie.image}" alt="Poster of ${movie.title}">
-            <div class="movie-title">${movie.title}</div>
-            <div style="text-align:center; font-size: 14px; color: orange;">[${movie.category || 'N/A'}]</div>
-            <div class="movie-stats">
-                <p>👁️ ${movie.viewCount || 0}</p>
-                <button class="like-btn" onclick="event.stopPropagation(); toggleLike('${movie.key}');">❤️ <span>${movie.likeCount || 0}</span></button>
+            <button class="more-options-btn" onclick="toggleOptionsMenu(event, '${movie.key}')">⋮</button>
+            <div class="options-menu" id="menu-${movie.key}">
+                <a href="#" onclick="savePost(event, '${movie.key}')">Save Post</a>
+            </div>
+            <div onclick="openViewer('${movie.key}')">
+                <img src="${movie.image}" alt="Poster of ${movie.title}">
+                <div class="movie-title">${movie.title}</div>
+                <div style="text-align:center; font-size: 14px; color: orange;">[${movie.category || 'N/A'}]</div>
+                <div class="movie-stats">
+                    <p>👁️ ${movie.viewCount || 0}</p>
+                    <button class="like-btn" onclick="event.stopPropagation(); toggleLike('${movie.key}');">❤️ <span>${movie.likeCount || 0}</span></button>
+                </div>
             </div>
         `;
         movieGrid.appendChild(card);
     }
     
-    // --- Modal and History Management ---
-
+    // --- Viewer Modal ---
     function openViewer(key) {
         const movie = allMoviesData[key];
         if (!movie) return;
 
         const viewerContent = document.getElementById('viewerContent');
         viewerContent.innerHTML = `
-            <span class="close" onclick="closeModal()">×</span>
+            <span class="close" onclick="closeModal('viewerModal')">×</span>
             <img src="${movie.image}" alt="Poster of ${movie.title}">
             <h3>${movie.title}</h3>
             <p style="color: #aaa;">Genre: <strong style="color: orange;">${movie.category}</strong></p>
             <div class="download-buttons">
                 ${movie.link ? `<a href="${movie.link}" target="_blank" class="watch-button">Watch Movie</a>` : ''}
-                ${movie.link2 ? `<a href="${movie.link2}" target="_blank">720p</a>` : ''}
-                ${movie.link3 ? `<a href="${movie.link3}" target="_blank">360p</a>` : ''}
+                ${movie.link2 ? `<a href="${movie.link2}" target="_blank" class="download-btn">720p</a>` : ''}
+                ${movie.link3 ? `<a href="${movie.link3}" target="_blank" class="download-btn">360p</a>` : ''}
+                <button class="share-button" onclick="sharePost('${key}')">Share</button>
             </div>
         `;
         
         viewerModal.style.display = 'block';
-        updateSeoAndHistory(movie);
         incrementViewCount(key);
     }
 
-    function updateSeoAndHistory(movie) {
-        document.title = `${movie.title} - Movie Downloader`;
-        document.querySelector('meta[name="description"]').setAttribute('content', `Download or watch ${movie.title}. Category: ${movie.category}.`);
-        // We only push state if we are not already on that movie's URL
-        if (window.location.hash !== `#/movie/${movie.key}`) {
-            history.pushState({ modal: 'viewer', key: movie.key }, document.title, `#/movie/${movie.key}`);
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == viewerModal) {
+            viewerModal.style.display = "none";
+        }
+        if (event.target == savedPostsModal) {
+            savedPostsModal.style.display = "none";
         }
     }
 
-    // This function is now the single point for closing modals via history
-    function closeModal() {
-        if(viewerModal.style.display === 'block' || savedPostsModal.style.display === 'block') {
-            history.back();
+    // --- Share Functionality ---
+    function sharePost(key) {
+        const movie = allMoviesData[key];
+        if (navigator.share) {
+            navigator.share({
+                title: movie.title,
+                text: `Check out ${movie.title}! You can watch or download it here.`,
+                url: window.location.href, // You can make this URL more specific if you implement routing
+            })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.log('Error sharing', error));
+        } else {
+            alert('Share feature is not supported in your browser.');
         }
     }
-
-    // The main event listener for the back button
-    window.addEventListener('popstate', (event) => {
-        viewerModal.style.display = 'none';
-        savedPostsModal.style.display = 'none';
-        
-        // Reset SEO to original
-        document.title = originalTitle;
-        document.querySelector('meta[name="description"]').setAttribute('content', originalDescription);
-    });
     
-    // Check URL on initial page load
-    function handleUrlOnLoad(snapshot) {
-        const hash = window.location.hash;
-        if (hash.startsWith('#/movie/')) {
-            const key = hash.substring('#/movie/'.length);
-            const data = snapshot.val();
-            if (data && data[key]) {
-                allMoviesData = data; // Make sure data is available
-                openViewer(key);
-            }
-        }
+    // --- Save Post Functionality ---
+    function toggleOptionsMenu(event, key) {
+        event.stopPropagation();
+        const menu = document.getElementById(`menu-${key}`);
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.options-menu').forEach(menu => menu.style.display = 'none');
+    });
+
+    function savePost(event, key) {
+        event.stopPropagation();
+        let saved = JSON.parse(localStorage.getItem('savedPosts')) || [];
+        if (!saved.includes(key)) {
+            saved.push(key);
+            localStorage.setItem('savedPosts', JSON.stringify(saved));
+            alert('Post saved!');
+        } else {
+            alert('This post is already saved.');
+        }
+        document.getElementById(`menu-${key}`).style.display = 'none';
+    }
+
+    savedPostsButton.onclick = function() {
+        savedPostsContainer.innerHTML = '';
+        const savedKeys = JSON.parse(localStorage.getItem('savedPosts')) || [];
+        if (savedKeys.length === 0) {
+            savedPostsContainer.innerHTML = '<p>No saved posts yet.</p>';
+        } else {
+            savedKeys.forEach(key => {
+                const movie = allMoviesData[key];
+                if (movie) {
+                    const postElement = document.createElement('div');
+                    postElement.innerHTML = `<p><a href="#" onclick="openViewer('${key}'); closeModal('savedPostsModal');">${movie.title}</a></p>`;
+                    savedPostsContainer.appendChild(postElement);
+                }
+            });
+        }
+        savedPostsModal.style.display = 'block';
+    };
 
     // --- Other Functionalities ---
-
     function incrementViewCount(key) {
         const movieRef = database.ref(`movies/${key}/viewCount`);
         movieRef.transaction(currentCount => (currentCount || 0) + 1);
@@ -265,9 +298,8 @@
     
     function filterByCategory(category) {
         currentCategoryFilter = category.toLowerCase();
-        // Update active button style
         document.querySelectorAll('.category-filters button').forEach(btn => {
-            btn.classList.toggle('active', btn.textContent.toLowerCase() === category);
+            btn.classList.toggle('active', btn.textContent.toLowerCase() === currentCategoryFilter);
         });
         filterMovies();
     }
@@ -290,4 +322,4 @@
 
 </script>
 </body>
-  </html>
+</html>
