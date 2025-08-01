@@ -1,204 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- Changed language to English -->
 <head>
-<script type='text/javascript' src='//pl27240886.profitableratecpm.com/d0/01/48/d001486b77c50cc7955b8de7fa77722a.js'></script>
-<script type='text/javascript' src='//pl25592823.profitableratecpm.com/5a/44/f3/5a44f3953acebff68b2ef494fac71fea.js'></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>Movie Downloader - Watch and Download Latest Movies</title>
-  <meta name="description" content="Explore and download the latest movies in various categories like Action, Comedy, Horror, and Romantic. Watch online or download in high quality.">
-  <link rel="canonical" href="https://rabbi50100.github.io/-HD/">
-  <meta name="robots" content="index, follow">
-  
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ðŸŽ¬ Exclusive Movie Preview | Limited Time Offer</title> <!-- English Title -->
 
-  <!-- আপনার বাকি meta এবং style ট্যাগ এখানে থাকবে -->
-  <style>
-    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #111; color: #fff; overflow-x: hidden; }
-    body.loading { overflow: hidden; }
-    body.loading > *:not(#loader) { display: none; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #1a1a1a; box-shadow: 0 2px 10px rgba(0,0,0,0.5); border-bottom: 2px solid orange; }
-    header h1 { color: orange; font-size: 28px; font-weight: bold; margin: 0; letter-spacing: 1px; text-shadow: 0 0 5px rgba(255,165,0,0.7); }
-    .category-filters { text-align: center; margin: 20px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; padding: 0 10px; }
-    .category-filters button { background-color: #333; color: orange; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px; transition: background-color 0.3s ease; white-space: nowrap; }
-    .category-filters button:hover { background-color: #555; }
-    .category-filters button.active { background-color: orange; color: black; }
-    #saved-posts-button { font-size: 24px; cursor: pointer; color: #fff; border: none; background: none; padding: 8px 12px; border-radius: 5px; transition: background-color 0.3s ease; }
-    #saved-posts-button:hover { background-color: #333; }
-    #search-bar { margin: 20px auto; max-width: 600px; display: block; width: calc(100% - 20px); padding: 10px; background-color: #222; color: #fff; border: 1px solid #444; border-radius: 6px; font-size: 16px; }
-    .movie-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 600px; margin: 20px auto; }
-    .movie-card { background-color: #222; border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.2s; position: relative; }
-    .movie-card:hover { transform: scale(1.03); }
-    .movie-card img { width: 100%; height: 280px; object-fit: cover; display: block; }
-    .movie-title { padding: 10px; text-align: center; font-weight: bold; }
-    /* থ্রি-ডট মেনুর জন্য নতুন CSS */
-    .more-options-btn { position: absolute; top: 8px; right: 8px; font-size: 24px; cursor: pointer; color: orange; background: rgba(0,0,0,0.5); border: none; padding: 0px 8px; border-radius: 50%; line-height: 1; z-index: 10; }
-    .options-menu { display: none; position: absolute; top: 35px; right: 8px; background-color: #333; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.7); z-index: 11; padding: 5px 0; min-width: 120px; text-align: left; }
-    .options-menu a { display: block; padding: 8px 15px; color: white; text-decoration: none; font-size: 14px; transition: background-color 0.2s; }
-    .options-menu a:hover { background-color: #555; }
-    .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); }
-    .modal-content { background-color: #222; margin: 10% auto; padding: 20px; border-radius: 10px; width: 90%; max-width: 400px; text-align: center; }
-    .modal-content img { width: 100%; border-radius: 10px; }
-    .modal-content h3 { margin: 15px 0; color: orange; }
-    .close { float: right; font-size: 28px; font-weight: bold; color: white; cursor: pointer; line-height: 1; }
-    #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 10000; flex-direction: column; }
-    .spinner { border: 6px solid #f3f3f3; border-top: 6px solid orange; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px; }
-    #loader p { color: orange; font-size: 18px; margin: 0; }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .movie-stats { display: flex; justify-content: space-around; align-items: center; padding: 8px 0; border-top: 1px solid #333; margin-top: 5px; font-size: 14px; }
-    .download-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-    .download-buttons a, .download-buttons button { display: inline-block; padding: 10px 15px; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; transition: background-color 0.3s ease; font-size: 14px; text-align: center; border: none; cursor: pointer; }
-    .download-buttons a:hover, .download-buttons button:hover { opacity: 0.9; }
-    .download-buttons .download-btn { background-color: #5cb85c; }
-    .download-buttons .watch-button { background-color: #d9534f; }
-    /* শেয়ার বাটনের জন্য নতুন CSS */
-    .download-buttons .share-button { background-color: #007bff; }
-    #saved-posts-container { max-height: 300px; overflow-y: auto; text-align: left; }
-  </style>
+    <!-- =============================================================== -->
+    <!-- Open Graph Meta Tags (For Facebook, Instagram, WhatsApp) -->
+    <!-- =============================================================== -->
 
+    <!-- REQUIRED: Provide the actual title of the post -->
+    <meta property="og:title" content="ðŸŽ¬ Exclusive Movie Preview | Watch Now!">
+
+    <!-- REQUIRED: Provide an attractive short description of the post -->
+    <meta property="og:description" content="Watch this exclusive preview before it's gone! Click now for a special viewing experience.">
+
+    <!-- REQUIRED: Provide the link to your preview image or GIF here (This link will show in the share) -->
+    <!-- New GIF link added -->
+    <meta property="og:image" content="https://archive.org/download/et00441505-tzgtwlxesf-landscape/et00441505-tzgtwlxesf-landscape.jpg"> <!-- *** This GIF will show in the preview *** -->
+    <!-- Optional: If GIF dimensions are known, you can add them, but it's not essential -->
+    <!-- <meta property="og:image:width" content="480"> -->
+    <!-- <meta property="og:image:height" content="270"> -->
+
+    <!-- REQUIRED: Provide the actual link to your Blogger post here -->
+    <meta property="og:url" content="https://archive.org/download/et00441505-tzgtwlxesf-landscape/et00441505-tzgtwlxesf-landscape.jpg"> <!-- *** CHANGE THIS to your actual blog post link *** -->
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Movie Mania"> <!-- You can change this site name if needed -->
+    <meta property="og:locale" content="en_US"> <!-- Changed locale to English (US) -->
+
+    <!-- Optional: Facebook App ID -->
+    <!-- <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID"> -->
+
+    <!-- =============================================================== -->
+    <!-- Twitter Card Meta Tags (For sharing on Twitter) -->
+    <!-- =============================================================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ðŸŽ¬ Exclusive Movie Preview | Watch Now!">
+    <meta name="twitter:description" content="Watch this exclusive preview before it's gone! Click now for a special viewing experience.">
+    <!-- New GIF link added -->
+    <meta name="twitter:image" content="https://archive.org/download/et00441505-tzgtwlxesf-landscape/et00441505-tzgtwlxesf-landscape.jpg"> <!-- *** This GIF for Twitter preview too *** -->
+    <!-- Optional: Your Twitter handle -->
+    <!-- <meta name="twitter:site" content="@YourTwitterHandle"> -->
+
+
+    <style>
+        body {
+            background-color: #111;
+            text-align: center;
+            color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            padding-top: 25px;
+            margin: 0;
+            line-height: 1.7;
+            overflow: hidden; /* Prevents scrollbars during loading/redirect */
+        }
+        .container {
+            max-width: 95%;
+            width: 550px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .gif-container {
+            cursor: pointer;
+            display: inline-block;
+            border: 4px solid #E1306C;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
+            margin: 10px 0;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+            padding: 4px;
+        }
+        .gif-container img {
+             display: block;
+             width: 100%;
+             height: auto;
+             border-radius: 6px;
+        }
+        .gif-container:hover {
+            transform: scale(1.03);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        h2 {
+            margin: 15px 0 10px;
+            font-size: 20px;
+            color: #ffffff;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        p {
+            margin: 10px 0;
+            font-size: 15px;
+            color: #ccc;
+        }
+        a {
+            color: #FCAF45;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #F77737;
+        }
+        .disclaimer {
+            font-size: 11px;
+            color: #777;
+            margin-top: 25px;
+            padding-top: 10px;
+            border-top: 1px solid #444;
+            line-height: 1.4;
+        }
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out; /* Keep transition for smooth appearance */
+            visibility: hidden;
+        }
+        #loadingOverlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #444;
+            border-top: 5px solid #E1306C;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>🎬 𝙼𝚘𝚟𝚒𝚎 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛</h1>
-    <button id="saved-posts-button" title="Saved Posts">📚</button>
-  </header>
 
-  <div class="category-filters">
-    <button onclick="filterByCategory('all')" class="active">All</button>
-    <button onclick="filterByCategory('latest movie')">Latest Movie</button>
-    <button onclick="filterByCategory('action')">Action</button>
-    <button onclick="filterByCategory('comedy')">Comedy</button>
-    <button onclick="filterByCategory('horror')">Horror</button>
-    <button onclick="filterByCategory('romantic')">Romantic</button>
-  </div>
-
-  <!-- সেভ করা পোস্ট দেখানোর জন্য নতুন মডাল -->
-  <div id="savedPostsModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('savedPostsModal')">×</span>
-      <h2>📚 Saved Posts</h2>
-      <div id="saved-posts-container"></div>
+    <div id="loadingOverlay">
+        <h2>Loading... Please wait</h2> <!-- English Loading Text -->
+        <div class="spinner"></div>
     </div>
-  </div>
 
-  <input type="text" id="search-bar" placeholder="🔍 Search movies by title..." onkeyup="filterMovies()">
+    <div class="container">
+        <h2>Your exclusive preview is loading... â³</h2> <!-- English Heading -->
+        <div class="gif-container" id="redirectTrigger">
+             <!-- New GIF link here -->
+             <img src="https://archive.org/download/et00441505-tzgtwlxesf-landscape/et00441505-tzgtwlxesf-landscape.jpg" alt="Click to watch the exclusive preview"> <!-- English Alt Text -->
+        </div>
+        <p>If the preview doesn't start automatically, <a id="manualLink" href="#">click here to watch now</a>.</p> <!-- English Text & Link Text -->
 
-  <div id="viewerModal" class="modal">
-    <div class="modal-content" id="viewerContent">
-        <!-- সিনেমার বিবরণ এখানে আসবে -->
+        <div class="disclaimer">
+            This is an independent preview page. The content displayed is for promotional purposes only. By accessing this page, you agree to our terms of service. This is not an official streaming service. <!-- English Disclaimer -->
+        </div>
     </div>
-  </div>
 
-  <div id="loader">
-      <div class="spinner"></div>
-      <p>Loading Movies...</p>
-  </div>
+    <script>
+        // 1. === IMPORTANT: SET YOUR ACTUAL REDIRECT LINK HERE ===
+        const directLink = "https://hindimovie.netlify.app/movie/single-movie-2025"; // Keep your direct link
 
-  <div class="movie-grid" id="movie-grid"></div>
+        // 2. Get loading overlay and redirect trigger elements
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const redirectTrigger = document.getElementById('redirectTrigger');
+        const manualLink = document.getElementById('manualLink');
 
-  <div style="text-align: center; padding: 20px; color: #777; font-size: 14px;">
-      <a href="#" style="color: orange; text-decoration: none;">Privacy Policy</a> | 
-      <a href="#" style="color: orange; text-decoration: none;">Terms of Service</a>
-      <p style="margin-top: 10px;">© 2025 Movie Downloader. All Rights Reserved.</p>
-  </div>
+        // Set the href for the manual link (as a backup)
+        manualLink.href = directLink;
 
+        // 3. Function to perform the redirect
+        function performRedirect() {
+            if (!loadingOverlay.classList.contains('show')) {
+                 loadingOverlay.classList.add('show');
+            }
+            // Attempt redirect immediately after showing overlay
+            try {
+                 // Use replace to avoid adding this page to history
+                 window.location.replace(directLink);
+            } catch (e) {
+                console.error("Redirect using replace failed, falling back to href:", e);
+                // Fallback if replace fails for any reason
+                window.location.href = directLink;
+            }
+        }
 
-<script>
-    // --- Firebase Configuration ---
-    const firebaseConfig = {
-      apiKey: "AIzaSyD-tlrPK8s9h87PVqtvprBy_phcCqONLeU",
-      authDomain: "my-movie-81a4b.firebaseapp.com",
-      databaseURL: "https://my-movie-81a4b-default-rtdb.firebaseio.com",
-      projectId: "my-movie-81a4b",
-      storageBucket: "my-movie-81a4b.firebasestorage.app",
-      messagingSenderId: "249876555391",
-      appId: "1:249876555391:web:81f3ad52805b0aa314c14a",
-      measurementId: "G-RHPWTHQHS2"
-    };
+        // 4. Automatic redirect attempt (scheduled for the next event loop tick)
+        const autoRedirectTimeout = setTimeout(performRedirect, 0); // Start redirect ASAP
 
-    // --- Initialize Firebase ---
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-    const moviesRef = database.ref('movies');
+        // 5. Click event listeners (for GIF and manual link)
+        function handleUserClick(event) {
+            event.preventDefault(); // Prevent default link behavior
+            clearTimeout(autoRedirectTimeout); // Stop the automatic redirect if it hasn't fired
+            console.log('Redirect triggered by user click.');
+            performRedirect(); // Perform redirect immediately on click
+        }
 
-    // --- Global Variables & DOM Elements ---
-    const movieGrid = document.getElementById('movie-grid');
-    const loader = document.getElementById('loader');
-    const viewerModal = document.getElementById('viewerModal');
-    const savedPostsModal = document.getElementById('savedPostsModal');
-    const savedPostsButton = document.getElementById('saved-posts-button');
-    const savedPostsContainer = document.getElementById('saved-posts-container');
+        redirectTrigger.addEventListener('click', handleUserClick);
+        manualLink.addEventListener('click', handleUserClick);
 
-    let allMoviesData = {};
-    let currentCategoryFilter = 'all';
+        // 6. Fail-safe redirect (if nothing happens after 5 seconds)
+        // This handles cases where the initial script might fail or be blocked
+        setTimeout(() => {
+            // Check if the overlay hasn't been shown yet (meaning redirect likely didn't start)
+            if (!loadingOverlay.classList.contains('show')) {
+                 console.warn("Initial redirect might have failed. Forcing redirect now.");
+                 performRedirect();
+            }
+        }, 5000); // 5 seconds
 
-    // --- Data Loading ---
-    document.addEventListener('DOMContentLoaded', () => {
-        document.body.classList.add('loading');
-        
-        moviesRef.orderByChild('timestamp').on('value', snapshot => {
-            loader.style.display = 'none';
-            document.body.classList.remove('loading');
-            const moviesArray = [];
-            snapshot.forEach(child => {
-                const movieData = { key: child.key, ...child.val() };
-                moviesArray.push(movieData);
-                allMoviesData[child.key] = movieData;
-            });
-            renderMovies(moviesArray.reverse());
-        }, error => {
-            console.error("Firebase Error:", error);
-            loader.style.display = 'none';
-            movieGrid.innerHTML = '<p style="color:red;">Failed to load movies.</p>';
-        });
-    });
-
-    function renderMovies(moviesArray) {
-        movieGrid.innerHTML = '';
-        moviesArray.forEach(movie => addMovieCard(movie));
-        filterMovies(); // Initial filter
-    }
-
-    function addMovieCard(movie) {
-        const card = document.createElement('div');
-        card.className = 'movie-card';
-        card.setAttribute('data-key', movie.key);
-        
-        card.innerHTML = `
-            <button class="more-options-btn" onclick="toggleOptionsMenu(event, '${movie.key}')">⋮</button>
-            <div class="options-menu" id="menu-${movie.key}">
-                <a href="#" onclick="savePost(event, '${movie.key}')">Save Post</a>
-            </div>
-            <div onclick="openViewer('${movie.key}')">
-                <img src="${movie.image}" alt="Poster of ${movie.title}">
-                <div class="movie-title">${movie.title}</div>
-                <div style="text-align:center; font-size: 14px; color: orange;">[${movie.category || 'N/A'}]</div>
-                <div class="movie-stats">
-                    <p>👁️ ${movie.viewCount || 0}</p>
-                    <button class="like-btn" onclick="event.stopPropagation(); toggleLike('${movie.key}');">❤️ <span>${movie.likeCount || 0}</span></button>
-                </div>
-            </div>
-        `;
-        movieGrid.appendChild(card);
-    }
-    
-    // --- Viewer Modal ---
-    function openViewer(key) {
-        const movie = allMoviesData[key];
-        if (!movie) return;
-
-        const viewerContent = document.getElementById('viewerContent');
-        viewerContent.innerHTML = `
-            <span class="close" onclick="closeModal('viewerModal')">×</span>
-            <img src="${movie.image}" alt="Poster of ${movie.title}">
-            <h3>${movie.title}</h3>
-            <p style="color: #aaa;">Genre: <strong style="color: orange;">${movie.category}</strong></p>
-            <div class="download-buttons">
-                ${movie.link ? `<a href="${movie.link}" target="_blank" class="watch-button">Watch Movie</a>` : ''}
-                ${movie.link2 ? `<a href="${movie.link2}" target="_blank" class="download-btn">720p</a>` : ''}
-                ${movie.link3 ? `<a href="${movie.link3}" target="_blank" class="download-btn">360p</a>` : ''}
+    </script>
+</body>
+</html>                ${movie.link3 ? `<a href="${movie.link3}" target="_blank" class="download-btn">360p</a>` : ''}
                 <button class="share-button" onclick="sharePost('${key}')">Share</button>
             </div>
         `;
