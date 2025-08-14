@@ -1,354 +1,163 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Changed language to English -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ðŸŽ¬ Exclusive Movie Preview | Limited Time Offer</title> <!-- English Title -->
-
-    <!-- =============================================================== -->
-    <!-- Open Graph Meta Tags (For Facebook, Instagram, WhatsApp) -->
-    <!-- =============================================================== -->
-
-    <!-- REQUIRED: Provide the actual title of the post -->
-    <meta property="og:title" content="ðŸŽ¬ Exclusive Movie Preview | Watch Now!">
-
-    <!-- REQUIRED: Provide an attractive short description of the post -->
-    <meta property="og:description" content="Watch this exclusive preview before it's gone! Click now for a special viewing experience.">
-
-    <!-- REQUIRED: Provide the link to your preview image or GIF here (This link will show in the share) -->
-    <!-- New GIF link added -->
-    <meta property="og:image" content="https://archive.org/download/et00441505-tzgtwlxesf-landscape/et00441505-tzgtwlxesf-landscape.jpg"> <!-- *** This GIF will show in the preview *** -->
-    <!-- Optional: If GIF dimensions are known, you can add them, but it's not essential -->
-    <!-- <meta property="og:image:width" content="480"> -->
-    <!-- <meta property="og:image:height" content="270"> -->
-
-    <!-- REQUIRED: Provide the actual link to your Blogger post here -->
-    <meta property="og:url" content="https://archive.org/download/et00441505-tzgtwlxesf-landscape/et00441505-tzgtwlxesf-landscape.jpg"> <!-- *** CHANGE THIS to your actual blog post link *** -->
-
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Movie Mania"> <!-- You can change this site name if needed -->
-    <meta property="og:locale" content="en_US"> <!-- Changed locale to English (US) -->
-
-    <!-- Optional: Facebook App ID -->
-    <!-- <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID"> -->
-
-    <!-- =============================================================== -->
-    <!-- Twitter Card Meta Tags (For sharing on Twitter) -->
-    <!-- =============================================================== -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ðŸŽ¬ Exclusive Movie Preview | Watch Now!">
-    <meta name="twitter:description" content="Watch this exclusive preview before it's gone! Click now for a special viewing experience.">
-    <!-- New GIF link added -->
-    <meta name="twitter:image" content="https://archive.org/download/et00441505-tzgtwlxesf-landscape/et00441505-tzgtwlxesf-landscape.jpg"> <!-- *** This GIF for Twitter preview too *** -->
-    <!-- Optional: Your Twitter handle -->
-    <!-- <meta name="twitter:site" content="@YourTwitterHandle"> -->
-
-
-    <style>
-        body {
-            background-color: #111;
-            text-align: center;
-            color: #f0f0f0;
-            font-family: 'Arial', sans-serif;
-            padding-top: 25px;
-            margin: 0;
-            line-height: 1.7;
-            overflow: hidden; /* Prevents scrollbars during loading/redirect */
-        }
-        .container {
-            max-width: 95%;
-            width: 550px;
-            margin: 0 auto;
-            padding: 15px;
-        }
-        .gif-container {
-            cursor: pointer;
-            display: inline-block;
-            border: 4px solid #E1306C;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.2s ease-in-out;
-            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
-            margin: 10px 0;
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
-            padding: 4px;
-        }
-        .gif-container img {
-             display: block;
-             width: 100%;
-             height: auto;
-             border-radius: 6px;
-        }
-        .gif-container:hover {
-            transform: scale(1.03);
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        h2 {
-            margin: 15px 0 10px;
-            font-size: 20px;
-            color: #ffffff;
-            font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-        p {
-            margin: 10px 0;
-            font-size: 15px;
-            color: #ccc;
-        }
-        a {
-            color: #FCAF45;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #F77737;
-        }
-        .disclaimer {
-            font-size: 11px;
-            color: #777;
-            margin-top: 25px;
-            padding-top: 10px;
-            border-top: 1px solid #444;
-            line-height: 1.4;
-        }
-        #loadingOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.95);
-            z-index: 10000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out; /* Keep transition for smooth appearance */
-            visibility: hidden;
-        }
-        #loadingOverlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #444;
-            border-top: 5px solid #E1306C;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-top: 20px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+    <title>TaskMaster Rewards</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div id="loadingOverlay">
-        <h2>Loading... Please wait</h2> <!-- English Loading Text -->
-        <div class="spinner"></div>
-    </div>
-
-    <div class="container">
-        <h2>Your exclusive preview is loading... â³</h2> <!-- English Heading -->
-        <div class="gif-container" id="redirectTrigger">
-             <!-- New GIF link here -->
-             <img src="https://archive.org/download/et00441505-tzgtwlxesf-landscape/et00441505-tzgtwlxesf-landscape.jpg" alt="Click to watch the exclusive preview"> <!-- English Alt Text -->
-        </div>
-        <p>If the preview doesn't start automatically, <a id="manualLink" href="#">click here to watch now</a>.</p> <!-- English Text & Link Text -->
-
-        <div class="disclaimer">
-            This is an independent preview page. The content displayed is for promotional purposes only. By accessing this page, you agree to our terms of service. This is not an official streaming service. <!-- English Disclaimer -->
-        </div>
-    </div>
-
-    <script>
-        // 1. === IMPORTANT: SET YOUR ACTUAL REDIRECT LINK HERE ===
-        const directLink = "https://hindimovie.netlify.app/movie/single-movie-2025"; // Keep your direct link
-
-        // 2. Get loading overlay and redirect trigger elements
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        const redirectTrigger = document.getElementById('redirectTrigger');
-        const manualLink = document.getElementById('manualLink');
-
-        // Set the href for the manual link (as a backup)
-        manualLink.href = directLink;
-
-        // 3. Function to perform the redirect
-        function performRedirect() {
-            if (!loadingOverlay.classList.contains('show')) {
-                 loadingOverlay.classList.add('show');
-            }
-            // Attempt redirect immediately after showing overlay
-            try {
-                 // Use replace to avoid adding this page to history
-                 window.location.replace(directLink);
-            } catch (e) {
-                console.error("Redirect using replace failed, falling back to href:", e);
-                // Fallback if replace fails for any reason
-                window.location.href = directLink;
-            }
-        }
-
-        // 4. Automatic redirect attempt (scheduled for the next event loop tick)
-        const autoRedirectTimeout = setTimeout(performRedirect, 0); // Start redirect ASAP
-
-        // 5. Click event listeners (for GIF and manual link)
-        function handleUserClick(event) {
-            event.preventDefault(); // Prevent default link behavior
-            clearTimeout(autoRedirectTimeout); // Stop the automatic redirect if it hasn't fired
-            console.log('Redirect triggered by user click.');
-            performRedirect(); // Perform redirect immediately on click
-        }
-
-        redirectTrigger.addEventListener('click', handleUserClick);
-        manualLink.addEventListener('click', handleUserClick);
-
-        // 6. Fail-safe redirect (if nothing happens after 5 seconds)
-        // This handles cases where the initial script might fail or be blocked
-        setTimeout(() => {
-            // Check if the overlay hasn't been shown yet (meaning redirect likely didn't start)
-            if (!loadingOverlay.classList.contains('show')) {
-                 console.warn("Initial redirect might have failed. Forcing redirect now.");
-                 performRedirect();
-            }
-        }, 5000); // 5 seconds
-
-    </script>
-</body>
-</html>                ${movie.link3 ? `<a href="${movie.link3}" target="_blank" class="download-btn">360p</a>` : ''}
-                <button class="share-button" onclick="sharePost('${key}')">Share</button>
+    <!-- Login Page -->
+    <div id="login-page" class="page active">
+        <div class="auth-container">
+            <div class="auth-box">
+                <div class="logo">
+                    <i class="fas fa-gem"></i>
+                    <h1>TaskMaster Rewards</h1>
+                </div>
+                <h2>Welcome Back!</h2>
+                <p>Log in to your account to continue earning.</p>
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <button type="button" class="btn btn-secondary">
+                        <i class="fab fa-google"></i> Login with Google
+                    </button>
+                    <p class="switch-form">Don't have an account? <a href="#">Sign up</a></p>
+                </form>
             </div>
-        `;
-        
-        viewerModal.style.display = 'block';
-        incrementViewCount(key);
-    }
+        </div>
+    </div>
 
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
-    }
+    <!-- Main App Page (Dashboard) -->
+    <div id="app-page" class="page">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-gem"></i>
+                <h2>TaskMaster<br>Rewards</h2>
+            </div>
+            <nav class="menu">
+                <a href="#dashboard" class="menu-item active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#tasks" class="menu-item"><i class="fas fa-tasks"></i> Tasks</a>
+                <a href="#withdraw" class="menu-item"><i class="fas fa-wallet"></i> Withdraw</a>
+                <a href="#admin" class="menu-item"><i class="fas fa-shield-alt"></i> Admin Panel</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
 
-    window.onclick = function(event) {
-        if (event.target == viewerModal) {
-            viewerModal.style.display = "none";
-        }
-        if (event.target == savedPostsModal) {
-            savedPostsModal.style.display = "none";
-        }
-    }
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <h1>Dashboard</h1>
+                <div class="card balance-card">
+                    <h3>Your Balance</h3>
+                    <p>You have <span id="balance-points" class="points">1,250 Points</span> available for withdrawal.</p>
+                </div>
+                <h2>Recent Activity</h2>
+                <div class="card">
+                   <p>No recent activity to show.</p>
+                </div>
+            </section>
 
-    // --- Share Functionality ---
-    function sharePost(key) {
-        const movie = allMoviesData[key];
-        if (navigator.share) {
-            navigator.share({
-                title: movie.title,
-                text: `Check out ${movie.title}! You can watch or download it here.`,
-                url: window.location.href, // You can make this URL more specific if you implement routing
-            })
-            .then(() => console.log('Successful share'))
-            .catch((error) => console.log('Error sharing', error));
-        } else {
-            alert('Share feature is not supported in your browser.');
-        }
-    }
+            <!-- Tasks Section -->
+            <section id="tasks" class="content-section">
+                <h1>Tasks</h1>
+                <div class="task-list">
+                    <div class="card task-item">
+                        <h4>Watch a Video Ad</h4>
+                        <p>Watch a 30-second video to earn points.</p>
+                        <div class="task-reward">
+                            <span>+10 Points</span>
+                            <button class="btn btn-small">Start</button>
+                        </div>
+                    </div>
+                     <div class="card task-item">
+                        <h4>Visit a Website</h4>
+                        <p>Visit our partner's website for 60 seconds.</p>
+                        <div class="task-reward">
+                            <span>+15 Points</span>
+                            <button class="btn btn-small">Start</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Withdraw Section -->
+            <section id="withdraw" class="content-section">
+                <h1>Withdraw</h1>
+                <div class="card balance-card">
+                    <h3>Your Balance</h3>
+                    <p>You have <span id="withdraw-balance-points" class="points">1,250 Points</span> available for withdrawal.</p>
+                </div>
+                <div class="withdraw-container">
+                    <div class="tabs">
+                        <button class="tab-link active" data-tab="new-request">New Request</button>
+                        <button class="tab-link" data-tab="history">History</button>
+                    </div>
+                    <div id="new-request" class="tab-content active">
+                        <div class="card">
+                            <h3>Make a Withdrawal Request</h3>
+                            <p class="payout-info">Minimum payout is 1000 points ($10.00).</p>
+                            <form id="withdraw-form">
+                                <div class="input-group">
+                                    <label for="payment-method">Payment Method</label>
+                                    <div class="custom-select">
+                                        <select id="payment-method" required>
+                                            <option value="paypal">PayPal</option>
+                                            <option value="payoneer">Payoneer</option>
+                                            <option value="usdt">USDT (TRC20)</option>
+                                            <option value="bkash">bKash</option>
+                                            <option value="nagad">Nagad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="payment-details">Account Details</label>
+                                    <input type="text" id="payment-details" placeholder="e.g., your@email.com or 01700..." required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit Request</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="history" class="tab-content">
+                        <div class="card">
+                            <h3>Withdrawal History</h3>
+                            <div class="history-table">
+                                <div class="history-item">
+                                    <p>500 Points to bKash <span class="status pending">Pending</span></p>
+                                    <small>Oct 26, 2023</small>
+                                </div>
+                                <div class="history-item">
+                                     <p>1000 Points to PayPal <span class="status completed">Completed</span></p>
+                                     <small>Oct 15, 2023</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+             <!-- Admin Panel Section -->
+            <section id="admin" class="content-section">
+                <h1>Admin Panel</h1>
+                <div class="card">
+                    <p>Welcome, Admin! This section is for managing users, tasks, and withdrawals. Full functionality requires a backend connection.</p>
+                </div>
+            </section>
+        </main>
+    </div>
     
-    // --- Save Post Functionality ---
-    function toggleOptionsMenu(event, key) {
-        event.stopPropagation();
-        const menu = document.getElementById(`menu-${key}`);
-        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    }
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.options-menu').forEach(menu => menu.style.display = 'none');
-    });
-
-    function savePost(event, key) {
-        event.stopPropagation();
-        let saved = JSON.parse(localStorage.getItem('savedPosts')) || [];
-        if (!saved.includes(key)) {
-            saved.push(key);
-            localStorage.setItem('savedPosts', JSON.stringify(saved));
-            alert('Post saved!');
-        } else {
-            alert('This post is already saved.');
-        }
-        document.getElementById(`menu-${key}`).style.display = 'none';
-    }
-
-    savedPostsButton.onclick = function() {
-        savedPostsContainer.innerHTML = '';
-        const savedKeys = JSON.parse(localStorage.getItem('savedPosts')) || [];
-        if (savedKeys.length === 0) {
-            savedPostsContainer.innerHTML = '<p>No saved posts yet.</p>';
-        } else {
-            savedKeys.forEach(key => {
-                const movie = allMoviesData[key];
-                if (movie) {
-                    const postElement = document.createElement('div');
-                    postElement.innerHTML = `<p><a href="#" onclick="openViewer('${key}'); closeModal('savedPostsModal');">${movie.title}</a></p>`;
-                    savedPostsContainer.appendChild(postElement);
-                }
-            });
-        }
-        savedPostsModal.style.display = 'block';
-    };
-
-    // --- Other Functionalities ---
-    function incrementViewCount(key) {
-        const movieRef = database.ref(`movies/${key}/viewCount`);
-        movieRef.transaction(currentCount => (currentCount || 0) + 1);
-    }
-    
-    function toggleLike(key) {
-        const storageKey = `liked_${key}`;
-        if (localStorage.getItem(storageKey)) {
-            alert("You've already liked this movie.");
-            return;
-        }
-        const likeRef = database.ref(`movies/${key}/likeCount`);
-        likeRef.transaction(currentLikes => (currentLikes || 0) + 1).then(() => {
-            localStorage.setItem(storageKey, 'true');
-        });
-    }
-    
-    function filterByCategory(category) {
-        currentCategoryFilter = category.toLowerCase();
-        document.querySelectorAll('.category-filters button').forEach(btn => {
-            btn.classList.toggle('active', btn.textContent.toLowerCase() === currentCategoryFilter);
-        });
-        filterMovies();
-    }
-
-    function filterMovies() {
-        const query = document.getElementById('search-bar').value.toLowerCase();
-        document.querySelectorAll('.movie-card').forEach(card => {
-            const key = card.getAttribute('data-key');
-            const movie = allMoviesData[key];
-            if (movie) {
-                const title = movie.title.toLowerCase();
-                const category = (movie.category || '').toLowerCase();
-                const isCategoryMatch = currentCategoryFilter === 'all' || category === currentCategoryFilter;
-                const isSearchMatch = title.includes(query);
-                
-                card.style.display = isCategoryMatch && isSearchMatch ? 'block' : 'none';
-            }
-        });
-    }
-
-</script>
+    <script src="script.js"></script>
 </body>
-</html>
+                            </html>
