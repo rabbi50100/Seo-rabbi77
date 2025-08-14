@@ -5,41 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskMaster Rewards</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Login Page Container -->
-    <div id="login-page" class="page-container active">
+    <!-- Loading Spinner -->
+    <div id="loader" class="loader-container">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Login & Sign Up Page -->
+    <div id="auth-page" class="page-container active">
         <div class="auth-box">
             <div class="logo">
                 <i class="fas fa-gem"></i>
                 <h1>TaskMaster Rewards</h1>
             </div>
-            <h2>Welcome Back!</h2>
-            <p>Log in to your account to continue earning.</p>
-            <form id="login-form">
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <h2>Welcome Back!</h2>
+                <p>Log in to your account to continue.</p>
                 <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="you@example.com" required>
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
                 </div>
                 <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
-                <button type="button" class="btn btn-secondary">
-                    <i class="fab fa-google"></i> Login with Google
-                </button>
-                <p class="switch-form">Don't have an account? <a href="#">Sign up</a></p>
+                 <p class="error-message" id="login-error"></p>
+                <p class="switch-form">Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
             </form>
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="auth-form">
+                <h2>Create Account</h2>
+                <p>Start your earning journey today!</p>
+                <div class="input-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                 <p class="error-message" id="signup-error"></p>
+                <p class="switch-form">Already have an account? <a href="#" id="show-login">Log In</a></p>
+            </form>
+            <div class="divider">OR</div>
+            <button type="button" id="google-login-btn" class="btn btn-secondary">
+                <i class="fab fa-google"></i> Continue with Google
+            </button>
         </div>
     </div>
 
-    <!-- Main App Page Container -->
+    <!-- Main App Page -->
     <div id="app-page" class="page-container">
+        <div class="mobile-header">
+            <button id="menu-toggle" class="menu-toggle-btn"><i class="fas fa-bars"></i></button>
+            <h2 class="mobile-logo">TaskMaster</h2>
+        </div>
         <aside class="sidebar">
             <div class="logo">
                 <i class="fas fa-gem"></i>
@@ -49,107 +75,25 @@
                 <a href="#dashboard" class="menu-item active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                 <a href="#tasks" class="menu-item"><i class="fas fa-tasks"></i> Tasks</a>
                 <a href="#withdraw" class="menu-item"><i class="fas fa-wallet"></i> Withdraw</a>
-                <a href="#admin" class="menu-item"><i class="fas fa-shield-alt"></i> Admin Panel</a>
+                <a href="#admin" class="menu-item admin-only"><i class="fas fa-shield-alt"></i> Admin Panel</a>
             </nav>
             <div class="sidebar-footer">
+                <p id="user-email" class="user-email-display"></p>
                 <button id="logout-btn" class="btn btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
             </div>
         </aside>
 
         <main class="main-content">
-            <!-- Dashboard Section -->
-            <section id="dashboard" class="content-section active">
-                <h1>Dashboard</h1>
-                <div class="card balance-card">
-                    <h3>Your Balance</h3>
-                    <p>You have <span class="points">1,250 Points</span> available for withdrawal.</p>
-                </div>
-                <h2>Recent Activity</h2>
-                <div class="card">
-                   <p>No recent activity to show.</p>
-                </div>
-            </section>
-
-            <!-- Tasks Section -->
-            <section id="tasks" class="content-section">
-                <h1>Tasks</h1>
-                <div class="task-list">
-                    <div class="card task-item">
-                        <h4>Watch a Video Ad</h4>
-                        <p>Watch a 30-second video to earn points.</p>
-                        <div class="task-reward">
-                            <span>+10 Points</span>
-                            <button class="btn btn-small">Start</button>
-                        </div>
-                    </div>
-                     <div class="card task-item">
-                        <h4>Visit a Website</h4>
-                        <p>Visit our partner's website for 60 seconds.</p>
-                        <div class="task-reward">
-                            <span>+15 Points</span>
-                            <button class="btn btn-small">Start</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Withdraw Section -->
-            <section id="withdraw" class="content-section">
-                <h1>Withdraw</h1>
-                <div class="card balance-card">
-                    <h3>Your Balance</h3>
-                    <p>You have <span class="points">1,250 Points</span> available for withdrawal.</p>
-                </div>
-                <div class="withdraw-container">
-                    <div class="tabs">
-                        <button class="tab-link active" data-tab="new-request">New Request</button>
-                        <button class="tab-link" data-tab="history">History</button>
-                    </div>
-                    <div id="new-request" class="tab-content active">
-                        <div class="card">
-                            <h3>Make a Withdrawal Request</h3>
-                            <p class="payout-info">Minimum payout is 1000 points ($10.00).</p>
-                            <form id="withdraw-form">
-                                <div class="input-group">
-                                    <label for="payment-method">Payment Method</label>
-                                    <div class="custom-select">
-                                        <select id="payment-method" required>
-                                            <option value="paypal">PayPal</option>
-                                            <option value="payoneer">Payoneer</option>
-                                            <option value="usdt">USDT (TRC20)</option>
-                                            <option value="bkash">bKash</option>
-                                            <option value="nagad">Nagad</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label for="payment-details">Account Details (Email/Number)</label>
-                                    <input type="text" id="payment-details" placeholder="e.g., your@email.com or 01700..." required>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit Request</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="history" class="tab-content">
-                        <div class="card">
-                            <h3>Withdrawal History</h3>
-                            <div class="history-table">
-                                <p>No withdrawal history yet.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-             <!-- Admin Panel Section -->
-            <section id="admin" class="content-section">
-                <h1>Admin Panel</h1>
-                <div class="card">
-                    <p>Welcome, Admin! This section is for managing users, tasks, and withdrawals. Full functionality requires a backend connection.</p>
-                </div>
-            </section>
+            <!-- All content sections will be injected here by JS -->
         </main>
     </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     
+    <!-- Local Script -->
     <script src="script.js"></script>
 </body>
     </html>
